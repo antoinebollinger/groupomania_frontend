@@ -30,7 +30,7 @@ export default {
     watch: {
         'notification': {
             handler: function(after) {
-                const newNotification = (after) ? 0 : -1 ;
+                const newNotification = (after) ? 1 : 0 ;
                 this.updateUserWantsNotifs(newNotification);
                 if (!after) {
                     const favicon = document.getElementById("favicon");
@@ -58,8 +58,8 @@ export default {
             }) 
         },
         localUpdate: function(emit) {
-            this.notification = (localStorage.notification > -1) ? true : false;
-            this.notificationMsg = (localStorage.notification > -1) ? 'Notifications activées' : 'Notifications désactivées';
+            this.notification = (localStorage.notification == 1) ? true : false;
+            this.notificationMsg = (localStorage.notification == 1) ? 'Notifications activées' : 'Notifications désactivées';
             if (emit) {EventBus.$emit('newNotification', '');}
         }
     }

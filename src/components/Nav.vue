@@ -86,13 +86,11 @@ export default {
            return {"showImage": showImage, "imageUrl": imageUrl}
         },
         getNotifs: function() {
-            this.userWantsNotifs = (localStorage.notification && parseInt(localStorage.notification) > -1) ? true : false ;
-            if (this.userWantsNotifs) {
-                this.$http.get(`${process.env.VUE_APP_API}/api/notification/${localStorage.id}`,   {headers: {	Authorization: `Bearer ${localStorage.token}` }})
+            this.userWantsNotifs = (localStorage.notification && localStorage.notification == 1) ? true : false ;
+            if (localStorage.notification == 1) {
+                this.$http.get(`${process.env.VUE_APP_API}/api/notification/${localStorage.id}/active`,   {headers: {	Authorization: `Bearer ${localStorage.token}` }})
                 .then(response => {
-                    this.nbNotifications = parseInt(response.data.length) - parseInt(localStorage.notification) ;
-                    localStorage.notification = parseInt(response.data.length);
-                    this.animateBell = (this.nbNotifications > 0) ? true : false;
+                    this.nbNotifications = response.data[0].nbNotifications;
                     if (this.nbNotifications > 0) {this.changeFavicon(`${window.location.origin}/notif.ico`);}
                 })
                 .catch(error => {
@@ -101,10 +99,9 @@ export default {
             }
         },
         unactiveNotifs: function() {
-            this.changeFavicon(`${window.location.origin}/icon.ico`);
-            if (this.nbNotifications > 0) {
-                localStorage.notification = parseInt(localStorage.notification) + parseInt(this.nbNotifications) ;
-                this.$http.put(`${process.env.VUE_APP_API}/api/user/${localStorage.id}/notifs`, { "notification": localStorage.notification }, {
+            this.changeFavicon(`${window.location.origin}/icon.ico`);  
+            if (this.nbNotifications >= 0) {
+                this.$http.put(`${process.env.VUE_APP_API}/api/user/${localStorage.id}/reset`, {}, {
                     headers: {
                         Authorization: `Bearer ${localStorage.token}`
                     }
