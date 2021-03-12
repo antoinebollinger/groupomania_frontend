@@ -1,0 +1,125 @@
+// CREATE POST && SINGLE POST VIEW //
+
+.PostDialog {
+    top: 50px;
+    left: 0;
+    right:0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+	z-index: 2;
+	> div > div:nth-child(1) {
+		max-height: 1.5em;
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0.4rem;
+		z-index: 1;
+		text-shadow: 0 0 2px black;
+		> i {
+			font-size: 1.5em;
+			cursor: pointer;
+		}
+	}
+    textarea {
+        min-width: 100%;
+        min-height: 10vh;
+        border-radius: 0.25rem!important;
+    }
+    #postImgSelector {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .PostDialog {
+		top:0;
+        bottom: 50px!important;
+    }
+}
+
+
+ // GENERAL POST //
+
+.card {
+    border: none;
+    background-color: white;
+}
+
+.ellipsis {
+    color: #a09c9c;
+}
+
+hr {
+    color: #a09c9c;
+    margin-top: 4px;
+    margin-bottom: 8px
+}
+
+.muted-color {
+    color: #a09c9c;
+    font-size: 13px
+}
+
+.ellipsis i {
+    margin-top: 3px;
+    cursor: pointer
+}
+
+.icons i {
+    font-size: 25px
+}
+
+.icons .fa-heart {
+    color: red
+}
+
+.icons .fa-smile-o {
+    color: yellow;
+    font-size: 29px
+}
+
+.rounded-image {
+    border-radius: 50% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px
+}
+
+.name {
+    font-weight: 600;
+    margin: 0;
+}
+
+.comment-text {
+    font-size: 1em;
+    margin: 0;
+}
+
+.status small {
+    margin-right: 10px;
+    color: blue
+}
+
+.form-control {
+    border-radius: 26px
+}
+
+.comment-input {
+    position: relative
+}
+
+.fonts {
+    position: absolute;
+    right: 13px;
+    top: 8px;
+    color: #a09c9c
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #8bbafe;
+    outline: 0;
+    box-shadow: none
+}

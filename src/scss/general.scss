@@ -1,0 +1,137 @@
+@mixin textNoWrap {
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+@mixin bgCover {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit!important;
+  text-decoration: inherit!important;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.hoverUnderline {
+  transition: all 0.4s;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.hoverGrey {
+  transition: all 0.2s;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}
+
+.hoverColor {
+  transition: all 0.2s;
+  &:hover {
+    color: var(--primary);
+  } 
+}
+
+.start {
+  position: relative;
+  min-height: calc(100% - 60px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  img.logo {
+      max-width: 300px;
+  }
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    background-color: var(--primary);
+    @include bgCover();
+  }
+}
+
+@media (min-width: 768px) {
+  .start:before {
+    content: "";
+  }
+}
+
+@media (max-width: 768px) {
+  .start {
+    padding-bottom: 100px!important;
+  }
+}
+
+.home {
+  padding-top: 50px;
+  min-height: 100%;
+	background-color: #eee!important;
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding-top: 0;
+    padding-bottom: 50px;
+    background-color: lightgray!important;
+    .card {
+      border-radius: 0!important;
+    }
+    .homeCard {
+      display: none;
+    }
+  }
+}
+
+p.alerte {
+	color: var(--danger);
+	margin: 0;
+	padding: 0;
+	font-size: 0.8em;
+	transition: color 0.4;
+	&:empty:before {
+		content: "\200b";
+	}
+  .icon::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f00d";
+  }
+	&.ok {
+		color: var(--success);
+        .icon::before {
+        font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f00c";
+        }
+	}
+}
+
+.form-control {
+  width: unset!important;
+	&:focus {
+		border-color: var(--secondary)!important;
+		box-shadow: 0 0 10px lightgrey!important;
+	}
+}

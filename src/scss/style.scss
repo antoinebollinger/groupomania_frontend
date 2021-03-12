@@ -1,0 +1,14 @@
+$theme-colors: (
+  "primary": #fd2d01,
+  "secondary": #ffd7d7,
+  "primary-2": #13A86D,
+  "secondary-2": #25F5A3,
+  "danger": #ff4136
+);
+
+@import './general.scss';
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+@import './post.scss';
+@import './transition.scss';
+@import './userCard.scss';
