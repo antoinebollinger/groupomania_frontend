@@ -1,24 +1,20 @@
-# frontend
+# Groupomania project : create a social network
 
-## Project setup
-```
-npm install
-```
+Instructions
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- Clone the global project (https://github.com/antoinebollinger/AntoineBollinger_7_03022021) on your local machine
 
-### Compiles and minifies for production
-```
-npm run build
-```
+# Frontend part
 
-### Lints and fixes files
-```
-npm run lint
-```
+For this part: 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- First create a .env file a the root of the project, with : 
+
+VUE_APP_NAME=Groupomania
+VUE_APP_API=/your API url - basicly http://localhost:3000
+
+- Start the app with 
+'npm install'
+'npm run serve'
+
+- The app will be runing at http://localhost:8080 or http://your_ip_address:8080
