@@ -5,11 +5,13 @@
             <div class="d-flex flex-row justify-content-between">
                 <p class="name cursorPointer hoverColor" v-if="(!userCanDelete && (this.typePost != 'userPost' || (this.typePost == 'userPost' && this.comment.userId != this.postId)))" @click="goToUser()">{{ nom }}<small class="ellipsis"> &bull; {{ temps }}</small></p>
                 <p class="name" v-else>{{ nom }}<small class="ellipsis"> &bull; {{ temps }}</small></p>
-                <div v-if="userCanDelete" class="d-flex ellipsis">
-                        <small class="deleteComment ml-2" @click="showEditComment = !showEditComment" v-if="showEditComment">Annuler</small>
-                        <small class="deleteComment ml-2" @click="showEditComment = !showEditComment" v-else>Modifier</small>
-                        <small class="deleteComment ml-2" @click="deleteComment()">Supprimer</small>
-                    </div>
+                <div class="d-flex ellipsis">
+                   
+                        <small class="cursorPointer hoverColor ml-2" @click="showEditComment = !showEditComment" v-if="showEditComment && userCanDelete">Annuler</small>
+                        <small class="cursorPointer hoverColor ml-2" @click="showEditComment = !showEditComment" v-if="!showEditComment && userCanDelete">Modifier</small>
+                        <small class="cursorPointer hoverColor ml-2" @click="deleteComment()" v-if="userCanDelete || isAdmin"><i class="fas fa-shield-alt mr-1" v-if="isAdmin && !userCanDelete"></i>Supprimer</small>
+                   
+                </div>
             </div>
             <form role="form" @submit.prevent="editComment()" method="post" class="d-flex mb-1" v-if="showEditComment">
                 <input type="text" class="form-control flex-grow-1" name="newContent" v-model="newContent">
@@ -43,9 +45,6 @@ export default {
             newContent: ''
         }
     },
-    mounted () {
-        this.newContent = this.comment.content;
-    },
     computed: {
         nom: function() {
             return ((this.comment.firstName != '') ? this.comment.firstName : 'Compte')+' '+((this.comment.lastName != '') ? this.comment.lastName : 'supprimé');
@@ -69,7 +68,13 @@ export default {
         },
         userCanDelete: function() {
             return this.comment.userId == localStorage.id;
+        },
+        isAdmin: function() {
+            return (localStorage.admin == 1) ? true : false;
         }
+    },
+    mounted () {
+        this.newContent = this.comment.content;
     },
     methods: {
         editComment: function() {
@@ -108,7 +113,7 @@ export default {
                 },
                 data: {
                     "currentUserId": localStorage.id,
-                    "admin": false
+                    "admin": this.isAdmin
                 }
             })
             .then(() => {
