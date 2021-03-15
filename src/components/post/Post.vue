@@ -1,6 +1,6 @@
 <template>
     <transition name="fade" mode="out-in">
-        <div class="card shadow-sm mb-1 mb-md-4">
+        <div class="card shadow-sm mb-1 mb-md-4" :data-postId="post.id">
             <div class="d-flex justify-content-between p-2">
                 <div class="d-flex flex-row align-items-center"> 
                     <UserImage :image="imgProfile" dia="40" />
@@ -24,15 +24,22 @@
             </div>
             <div class="p-2">
                 <div class="d-flex flex-row align-items-center justify-content-between text-muted pt-2 my-2">
-                    <div class="d-flex flex-row d-flex align-items-center">
-                        <template v-if="post.likes === 0 ">
+                    <div class="d-flex flex-row d-flex align-items-center position-relative">
+                        <div v-if="post.likes === 0 ">
                             <i class="far fa-heart"></i>
-                            <span class="mx-1">{{ post.likes }}</span>
-                        </template>
-                        <template v-else>
+                            <span class="mx-1">0</span>
+                        </div>
+                        <div v-else class="cursorPointer" @mouseover="showLikes = true" @mouseleave="showLikes = false">
                             <i class="fa fa-heart text-primary-2"></i>
                             <span class="mx-1 text-primary-2">{{ post.likes }}</span>
-                        </template>
+                            <transition name="fade" mode="out-in">
+                                <div class="position-absolute userLikes" v-if="showLikes">
+                                    <template v-for="like in likes">
+                                        <User :user="like" :key="like.id" :ref="like.id" />
+                                    </template>
+                                </div>
+                            </transition>
+                        </div>
                         <span class="mx-1" v-if="post.comments > 0">&bull;</span>
                         <span class="mx-1 cursorPointer hoverUnderline" v-if="post.comments > 0" @click="showComments = !showComments">{{ post.comments }} commentaire<span v-if="post.comments > 1">s</span></span>
                     </div>
@@ -63,6 +70,7 @@
 <script>
 import UserImage from '@/components/user/UserImage.vue';
 import Comment from '@/components/post/Comment.vue';
+import User from '@/components/user/User.vue';
 import EventBus from '@/services/eventBus';
 import notification from '@/services/notification'
 
@@ -79,8 +87,10 @@ export default {
     data () {
         return {
             showComments: false,
+            showLikes: false,
             isSinglePost: false,
             comments: {},
+            likes: {},
             content: ''
         }
     },
@@ -115,6 +125,7 @@ export default {
     mounted () {
         this.isSinglePost = (this.typePost == 'singlePost') ? true : false ;
         this.getComments();
+        this.getLikes();
 		EventBus.$on('newPost', () => {
 			this.getComments();
 		})
@@ -164,6 +175,15 @@ export default {
                     console.log(error)
                 });
             }
+        },
+        getLikes: function() {
+            this.$http.get(`${process.env.VUE_APP_API}/api/post/${this.post.id}/like`, {headers: {	Authorization: `Bearer ${localStorage.token}` }})
+            .then(response => {
+                this.likes = response.data;
+            })
+            .catch(error => {
+                console.log(error);
+            })
         },
         userLike: function() {
             this.$http.post(`${process.env.VUE_APP_API}/api/post/${this.post.id}/like`, {"currentUserId": localStorage.id, "like": 1}, {headers: {	Authorization: `Bearer ${localStorage.token}` }})
@@ -215,9 +235,6 @@ export default {
                 }
             })
             .then(() => {
-                if (this.$route.name != 'Home') {
-                    //this.$router.push('Home');
-                }
                 EventBus.$emit('newPost', '');
             })
             .catch(error => {
@@ -232,7 +249,8 @@ export default {
     },
     components: {
         UserImage,
-        Comment
+        Comment,
+        User
     }
 }
 </script>
@@ -251,6 +269,10 @@ textarea {
         cursor: pointer;
         text-shadow: 0 0 10px black;
     }
+}
+
+.userLikes {
+    bottom: 100%;
 }
 
 @media (max-width: 768px) {

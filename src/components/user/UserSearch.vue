@@ -2,7 +2,7 @@
     <div class="card mb-1 mb-md-4 userSearch">
         <div class="p-2">
             <p class="font-weight-bold">Mes collègues :</p>
-			<input type="search" placeholder="Rechercher un collègue..." aria-describedby="button-addon1" class="form-control bg-light w-100 mb-4" v-model="input.search" @keyup.up="searchUp()" @keyup.down="searchDown()">
+			<input type="search" placeholder="Rechercher un collègue..." aria-describedby="button-addon1" class="form-control bg-light w-100 mb-4" v-model="input.search">
             <template v-for="user in users">
             <User :user="user" :key="user.id" :ref="user.id" />
             </template>
@@ -56,30 +56,6 @@ export default {
 			.catch(error => {
 				console.log(error);
 			})			
-		},
-		searchUp: function() {
-			this.search('up');
-		},
-		searchDown: function() {
-			this.search('down');
-		},
-		search: function(upDown) {
-			console.log(upDown);
-			let list = document.querySelectorAll('div.user');
-			switch(upDown) {
-				case 'up': 
-					list = Object.assign([],list).reverse();
-					list.forEach(function(ele) {						
-						console.log(ele.classList.contains('active'));
-					});
-					break;
-				case 'down':
-					list = Object.assign([],list);
-					list.forEach(function(ele) {
-						console.log(ele.classList.contains('active'));
-					});
-					break;
-			}
 		}
 	},
 	components: {
