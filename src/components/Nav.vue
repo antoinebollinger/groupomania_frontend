@@ -24,7 +24,7 @@
                 <li class="nav-item rounded mx-1 hoverGrey">
                     <router-link to="/profile" class="nav-link rounded" :title="userName">
                         <UserImage dia="35" v-if="showImage" class="my-1" />
-                        <i class="fas fa-user-tie" v-else></i>
+                        <i class="fas fa-user-tie my-1" v-else></i>
                     </router-link>
                 </li>
             </ul>

@@ -14,7 +14,7 @@
                     <div class="col-sm-5 d-flex align-items-center"><h6 class="mb-0">Ancien mot de passe</h6></div>
                     <div class="col-sm-7 text-primary-2">
                         <p class="text-left alerte">{{ errorMsg.oldPwd }}</p>
-                        <input type="password" v-model="data.oldPwd" id="oldPwd" name="oldPwd" class="form-control input-lg w-100" required>
+                        <input type="password" data-type="password" v-model="data.oldPwd" id="oldPwd" name="oldPwd" class="form-control input-lg w-100" required>
                     </div>
                 </div>
  
@@ -22,7 +22,7 @@
                     <div class="col-sm-5 d-flex align-items-center"><h6 class="mb-0">Nouveau mot de passe</h6></div>
                     <div class="col-sm-7 text-primary-2">
                         <p class="text-left alerte">{{ errorMsg.newPwd1 }}</p>
-                        <input type="password" v-model="data.newPwd1" id="newPwd1" name="newPwd1" class="form-control input-lg invalid w-100" required>
+                        <input type="password" data-type="password" v-model="data.newPwd1" id="newPwd1" name="newPwd1" class="form-control input-lg invalid w-100" required>
                         <CheckPwd />
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                     <div class="col-sm-5 d-flex align-items-center"><h6 class="mb-0">Répétez le nouveau mot de passe</h6></div>
                     <div class="col-sm-7 text-primary-2">
                         <p class="text-left alerte" id="textNewPwd2">{{ errorMsg.newPwd2 }}</p>
-                        <input type="password" v-model="data.newPwd2" id="newPwd2" name="newPwd2" class="form-control input-lg invalid w-100" required>
+                        <input type="password" data-type="password" v-model="data.newPwd2" id="newPwd2" name="newPwd2" class="form-control input-lg invalid w-100" required>
                     </div>
                 </div>
          

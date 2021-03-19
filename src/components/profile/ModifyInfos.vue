@@ -14,7 +14,7 @@
                 <div class="col-sm-7 text-primary-2" v-if="showInfos">{{ user.firstName }}</div>
                 <div class="col-sm-7 text-primary-2" v-if="!showInfos">
                     <p class="text-left alerte">{{ errorMsg.firstName }}</p>
-                    <input type="text" v-model="user.firstName" id="firstName" name="firstName" class="form-control input-lg w-100" />
+                    <input type="text" data-type="text" v-model="user.firstName" id="firstName" name="firstName" class="form-control input-lg w-100" />
                 </div>
             </div>
      
@@ -23,7 +23,7 @@
                 <div class="col-sm-7 text-primary-2" v-if="showInfos">{{ user.lastName }}</div>
                 <div class="col-sm-7 text-primary-2" v-if="!showInfos">
                     <p class="text-left alerte">{{ errorMsg.lastName }}</p>
-                    <input type="text" v-model="user.lastName" id="lastName" name="lastName" class="form-control input-lg w-100" />
+                    <input type="text" data-type="text" v-model="user.lastName" id="lastName" name="lastName" class="form-control input-lg w-100" />
                 </div>
             </div>
            
@@ -32,7 +32,7 @@
                 <div class="col-sm-7 text-primary-2" v-if="showInfos">{{ user.email }}</div>
                 <div class="col-sm-7 text-primary-2" v-if="!showInfos">
                     <p class="text-left alerte">{{ errorMsg.email }}</p>
-                    <input type="email" v-model="user.email" id="email" name="email" class="form-control input-lg w-100" />
+                    <input type="email" data-type="email" v-model="user.email" id="email" name="email" class="form-control input-lg w-100" />
                 </div>
             </div>
      
@@ -41,7 +41,7 @@
                 <div class="col-sm-7 text-primary-2" v-if="showInfos">{{ user.fonction }}</div>
                 <div class="col-sm-7 text-primary-2" v-if="!showInfos">
                     <p class="text-left alerte">{{ errorMsg.fonction }}</p>
-                    <input type="text" v-model="user.fonction" id="fonction" name="fonction" class="form-control input-lg w-100" />
+                    <input type="text" data-type="textEmpty" v-model="user.fonction" id="fonction" name="fonction" class="form-control input-lg w-100" />
                 </div>
             </div>
 
@@ -86,6 +86,7 @@ export default {
         modifyInfos: function() {
             this.$loading.show({delay: 0});
             const inputs = document.getElementById("modifyInfosForm").querySelectorAll('input');
+
             const goModify = this.checkForm(inputs);
             for (let element in this.errorMsg) {
                 this.errorMsg[element] = '';

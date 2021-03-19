@@ -6,19 +6,19 @@
 				<p class="alerte text-danger">{{ errorMsg.general }} </p>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.firstName }}</p>
-					<input v-focus v-model="input.firstName" type="text" name="firstName" id="firstName" class="form-control input-lg w-100" placeholder="Prénom" required>
+					<input v-focus v-model="input.firstName" type="text" data-type="text" name="firstName" id="firstName" class="form-control input-lg w-100" placeholder="Prénom" required>
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.lastName }}</p>
-					<input v-model="input.lastName" type="text" name="lastName" id="lastName" class="form-control input-lg w-100" placeholder="Nom" required>
+					<input v-model="input.lastName" type="text" data-type="text" name="lastName" id="lastName" class="form-control input-lg w-100" placeholder="Nom" required>
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.email }}</p>
-					<input v-model="input.email" type="email" name="email" id="email" class="form-control input-lg w-100" placeholder="E-mail" required>
+					<input v-model="input.email" type="email" data-type="email" name="email" id="email" class="form-control input-lg w-100" placeholder="E-mail" required>
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.password }}</p>
-					<input v-model="input.password" type="password" name="password" id="password" class="form-control input-lg invalid w-100" placeholder="Mot de passe">
+					<input v-model="input.password" type="password" data-type="password" name="password" id="password" class="form-control input-lg invalid w-100" placeholder="Mot de passe">
 					<br>
 					<CheckPwd />
 				</div>

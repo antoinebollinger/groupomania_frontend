@@ -5,11 +5,11 @@
 				<h1 class="text-uppercase pull-center text-primary">Connexion</h1>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.email }}</p>
-					<input v-focus v-model="input.email" type="email" name="email" id="email" class="form-control input-lg w-100" placeholder="E-mail">
+					<input v-focus v-model="input.email" type="email" data-type="email" name="email" id="email" class="form-control input-lg w-100" placeholder="E-mail">
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.password }}</p>
-					<input v-model="input.password" type="password" name="password" id="password" class="form-control input-lg w-100" placeholder="Mot de passe">
+					<input v-model="input.password" type="password" data-type="password" name="password" id="password" class="form-control input-lg w-100" placeholder="Mot de passe">
 				</div>
 				<div>
 					<button type="submit" class="btn btn-lg btn-primary text-uppercase w-100"><i class="fas fa-sign-in-alt"></i> Se connecter</button>
