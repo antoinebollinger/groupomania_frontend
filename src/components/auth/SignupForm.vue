@@ -18,7 +18,7 @@
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.password }}</p>
-					<input v-model="input.password" type="password" data-type="password" name="password" id="password" class="form-control input-lg invalid w-100" placeholder="Mot de passe" :disabled="loading">
+					<input v-model="input.password" type="password" data-type="password" name="password" id="password" class="form-control input-lg invalid w-100" placeholder="Mot de passe" required :disabled="loading">
 					<br>
 					<CheckPwd />
 				</div>
@@ -128,7 +128,6 @@ export default {
 					this.loading = false; this.loadingMsg = 'S\'inscrire';
 				}
 			}
-			this.loading = false; this.loadingMsg = 'S\'inscrire';
 		}
     },
 	components: {
