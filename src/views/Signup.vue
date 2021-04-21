@@ -11,7 +11,7 @@
                     <div class="col-md-5">
                         <SignupForm />
                         <br><hr><br>
-                        <router-link to="/login" title="Connexion"><p class="m-0 hoverColor">J'ai déjà un compte</p></router-link>
+                        <router-link to="/" title="Connexion"><p class="m-0 hoverColor">J'ai déjà un compte</p></router-link>
                     </div>
                 </div>
             </div>
