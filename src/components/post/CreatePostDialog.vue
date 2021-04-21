@@ -101,6 +101,7 @@ export default {
             }
         },
         createPost: function(action) {
+            this.$loading.show({delay:0});
             const formData = new FormData();
             let goPost = false;
             if (this.post.file) {
@@ -138,9 +139,11 @@ export default {
                                 console.log(error);
                             })
                             this.closeDialog();
+                            this.$loading.hide();
                         })
                         .catch(error => {
                             console.log(error);
+                            this.$loading.hide();
                         });
                         break;
                     case "edit":
@@ -153,15 +156,19 @@ export default {
                         .then(() => {
                             EventBus.$emit('newPost', '');
                             this.closeDialog();
+                            this.$loading.hide();
                         })
                         .catch(error => {
                             console.log(error);
+                            this.$loading.hide();
                         })
                         break;
                     default:
                         console.log('default');
                         break;
                 }
+            } else {
+                this.$loading.hide();
             }
         },
         closeDialog: function() {

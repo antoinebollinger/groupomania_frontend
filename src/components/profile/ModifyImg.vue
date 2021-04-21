@@ -45,6 +45,7 @@ export default {
             document.getElementById('imgSelector').click();
         },
         onSelect: function() {
+            this.$loading.show({delay:0});
             const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
             const file = this.$refs.file.files[0];
             let goImage = true;
@@ -70,6 +71,7 @@ export default {
                     localStorage.setItem('imageUrl', response.data.newUrl)
                     this.imageUrl = localStorage.imageUrl;
                     EventBus.$emit('logged', 'L\'image a bien été modifiée.');
+                    this.$loading.hide();
                     this.$dialog({
                         title: 'Confirmation',
                         content: response.data.message,
@@ -81,7 +83,10 @@ export default {
                 })
                 .catch(error => {
                     this.errorMsg = error.response.data.message;
+                    this.$loading.hide();
                 });
+            } else {
+                this.$loading.hide();
             }
         },
         logout: function() {
