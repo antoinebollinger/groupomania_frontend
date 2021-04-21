@@ -14,6 +14,7 @@
 <script>
 import EventBus from '@/services/eventBus';
 import UserImage from '@/components/user/UserImage.vue';
+import logout from '@/services/logout.js';
 
 export default {
     name: 'UserCard',
@@ -38,6 +39,7 @@ export default {
         this.user.fonction = localStorage.fonction;
         this.user.id = localStorage.id;
     },
+    mixins: [logout],
     methods: {
         openFileSelector: function() {
             document.getElementById('imgSelector').click();
@@ -90,6 +92,7 @@ export default {
                     label: 'Oui',
                     class: 'btn btn-primary',
                     callback: () => { this.logoutQuery(); }
+                   
                 },
                 {
                     label: 'Non',
@@ -97,23 +100,6 @@ export default {
                     ghost: true
                 }],
             })
-        },
-        logoutQuery: function() {
-            const tokenTmp = localStorage.token;
-            localStorage.clear()
-            this.$http.get(process.env.VUE_APP_API+'/api/auth/logout', {
-                headers: {'Authorization': 'Bearer '+tokenTmp}
-            })
-            .then(response => {
-                setTimeout( () => window.location.reload(), 1500);
-                this.$dialog({
-                    title: 'Déconnexion',
-                    content: response.data.message
-                })
-            })
-            .catch(error => {
-                console.log(error.response.data.message)
-            });
         }
     },
     components: {

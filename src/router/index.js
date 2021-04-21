@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+NProgress.configure({ showSpinner: false });
 
 Vue.use(VueRouter)
 
@@ -102,6 +106,17 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+})
+
+router.beforeResolve((to, from, next) => {
+  if (to.name) {
+    NProgress.start();
+  }
+  next()
+})
+
+router.afterEach(() => {
+  NProgress.done();
 })
 
 export default router

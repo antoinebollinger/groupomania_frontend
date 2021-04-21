@@ -11,12 +11,26 @@
 <script>
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
+import logout from '@/services/logout'
 
 export default {
   name: 'App',
   components: {
     Header, 
     Footer
+  },
+  mixins: [logout],
+  created: function () {
+    this.$http.interceptors.response.use(undefined, function (err) {
+      return new Promise(function (resolve, reject) {
+        console.log(resolve);
+        console.log(reject);
+        if (err.status === 401 && err.config && !err.config.__isRetryRequest) {
+          this.logoutQuery();
+        }
+        throw err;
+      });
+    });
   }
 }
 </script>

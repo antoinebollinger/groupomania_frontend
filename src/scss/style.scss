@@ -6,6 +6,10 @@ $theme-colors: (
   "danger": #ff4136
 );
 
+#nprogress .bar {
+  background: var(--primary)!important;
+}
+
 @import './general.scss';
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 @import 'node_modules/bootstrap-vue/src/index.scss';
