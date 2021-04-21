@@ -73,12 +73,12 @@ const routes = [
   },
   {
     path: '*', 
-    redirect: process.env.BASE_URL
+    redirect: '/login'
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  
   inkActiveClass: 'active', 
   routes, 
   scrollBehavior (to, from, savedPosition) {
