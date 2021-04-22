@@ -56,10 +56,19 @@
                         </template>
                     </div>
                     <div class="comment-input">
-                        <form role="form" @submit.prevent="createComment()" method="post" class="d-flex ">
+                        <form role="form" @submit.prevent="createComment()" method="post">
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="content" placeholder="Votre commentaire" v-model="content">
+                                <div class="input-group-append" >
+                                    <button type="submit" class="btn btn-outline-tertary" :disabled="(content == '') ? true : false"><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--<form role="form" @submit.prevent="createComment()" method="post" class="d-flex ">
                             <input type="text" class="form-control flex-grow-1 bg-light" name="content" v-model="content" placeholder="Votre commentaire...">
                             <button type="submit" class="commentButton btn" :disabled="(content == '') ? true : false"><i class="fas fa-paper-plane"></i></button>
-                        </form>
+                        </form>-->
                     </div>
                 </div>
             </div>

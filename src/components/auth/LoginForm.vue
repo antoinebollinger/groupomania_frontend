@@ -5,11 +5,11 @@
 				<h1 class="text-uppercase pull-center text-primary">Connexion</h1>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.email }}</p>
-					<InputEmail v-focus v-model="input.email" :disabled="loading" />
+					<InputEmail classe="loginInput" v-focus v-model="input.email" :disabled="loading" />
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.password }}</p>
-					<InputPassword v-model="input.password" :disabled="loading" />
+					<InputPassword classe="loginInput" v-model="input.password" :disabled="loading" />
 				</div>
 				<div>
 					<p class="text-left alerte"></p>
@@ -86,9 +86,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss" scoped>
-.iSubmit {
-	padding: 0.375rem 0.75rem;
-}
-</style>

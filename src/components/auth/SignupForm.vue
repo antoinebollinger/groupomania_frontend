@@ -6,19 +6,19 @@
 				<p class="alerte text-danger">{{ errorMsg.general }} </p>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.firstName }}</p>
-					<InputText v-focus icone="fas fa-user" v-model="input.firstName" name="firstName" id="firstName" placeholder="Prénom" :disabled="loading"/>
+					<InputText classe="loginInput" v-focus prependIcone="fas fa-user" v-model="input.firstName" name="firstName" id="firstName" placeholder="Prénom" :disabled="loading"/>
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.lastName }}</p>
-					<InputText icone="fas fa-user" v-model="input.lastName" name="lastName" id="lastName" placeholder="Nom" :disabled="loading"/>
+					<InputText classe="loginInput" prependIcone="fas fa-user" v-model="input.lastName" name="lastName" id="lastName" placeholder="Nom" :disabled="loading"/>
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.email }}</p>
-					<InputEmail v-model="input.email" :disabled="loading" />
+					<InputEmail classe="loginInput" v-model="input.email" :disabled="loading" />
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.password }}</p>
-					<InputPassword v-model="input.password" :disabled="loading" classe="invalid" />
+					<InputPassword classe="loginInput invalid" v-model="input.password" :disabled="loading" />
 					<br>
 					<CheckPwd binder="password" />
 				</div>
@@ -141,9 +141,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss" scoped>
-.iSubmit {
-	padding: 0.375rem 0.75rem;
-}
-</style>

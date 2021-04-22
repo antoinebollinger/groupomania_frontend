@@ -24,7 +24,10 @@
                     </div>
                     <hr class="p-2">
                     <div class="p-2 form-group my-2">
-                        <button class="btn btn-primary-2 w-100" @click="createPost('create')" v-if="resetDialog">Publier</button>
+                        <button class="btn btn-primary-2 w-100 d-flex align-items-center p-0" @click="createPost('create')" v-if="resetDialog">
+                            <span class="iSubmit" v-show="!loading"><i class="fas fa-paper-plane"></i></span>
+                            <span class="flex-grow-1">Publier</span>
+                        </button>
                         <button class="btn btn-primary-2 w-100" @click="createPost('edit')" v-else>Valider les modifications</button>
                     </div>
                 </div>

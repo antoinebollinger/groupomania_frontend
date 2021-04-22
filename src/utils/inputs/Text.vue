@@ -1,9 +1,12 @@
 <template>
     <div class="input-group">
         <div class="input-group-prepend" v-if="prepend">
-            <span class="input-group-text"><i :class="`${icone}`"></i></span>
+            <span class="input-group-text"><i :class="`${prependIcone}`"></i></span>
         </div>
         <input :class="`form-control ${classe}`" type="text" data-type="text" :id="id" :name="name" :placeholder="placeholder" :value="value" :required="required" :disabled="disabled" v-on:input="updateValue($event.target.value)">
+        <div class="input-group-append" v-if="append">
+            <span class="input-group-text"><i :class="`${appendIcone}`"></i></span>
+        </div>
     </div>
 </template>
 
@@ -15,9 +18,17 @@ export default {
             type: Boolean,
             default: true
         },
-        icone: {
+        prependIcone: {
             type: String,
             default: 'fas fa-paragraph'
+        },
+        append: {
+            type: Boolean,
+            default: false
+        },
+        appendIcone: {
+            type: String,
+            default: 'fas fa-paper-plane'
         },
         classe: {
             type: String,

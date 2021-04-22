@@ -2,7 +2,8 @@
     <div class="card mb-1 mb-md-4 userSearch">
         <div class="p-2">
             <p class="font-weight-bold">Mes collègues :</p>
-			<input type="search" placeholder="Rechercher un collègue..." aria-describedby="button-addon1" class="form-control bg-light w-100 mb-4" v-model="input.search">
+			<InputText class="mb-4" prependIcone="fas fa-search" placeholder="Rechercher un collègue..." v-model="input.search" />
+			<!--<input type="search" placeholder="Rechercher un collègue..." class="form-control bg-light w-100 mb-4" v-model="input.search">-->
             <template v-for="user in users">
             <User :user="user" :key="user.id" :ref="user.id" />
             </template>
@@ -12,6 +13,7 @@
 
 <script>
 import User from '@/components/user/User.vue';
+import InputText from '@/utils/inputs/Text';
 
 export default {
     name: 'UserSearch',
@@ -59,7 +61,8 @@ export default {
 		}
 	},
 	components: {
-		User
+		User,
+		InputText
 	}
 }
 </script>
