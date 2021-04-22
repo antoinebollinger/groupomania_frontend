@@ -3,10 +3,9 @@
         <div class="p-2">
             <p class="font-weight-bold">Mes collègues :</p>
 			<InputText class="mb-4" prependIcone="fas fa-search" placeholder="Rechercher un collègue..." v-model="input.search" />
-			<!--<input type="search" placeholder="Rechercher un collègue..." class="form-control bg-light w-100 mb-4" v-model="input.search">-->
-            <template v-for="user in users">
-            <User :user="user" :key="user.id" :ref="user.id" />
-            </template>
+            <div>
+				<User v-for="user in users" :user="user" :key="user.id" :ref="user.id" />
+            </div>
         </div>
     </div>
 </template>
