@@ -99,7 +99,6 @@ export default {
             this.data.id = this.user.id;
             this.data.body.email = this.user.email,
             this.data.body.admin = (localStorage.admin == 1) ? true : false;
-            console.log(JSON.stringify(this.data))
             this.$dialog({
                 title: 'Suppression de compte',
                 content: 'Êtes-vous certain de vouloir supprimer votre compte ?',
