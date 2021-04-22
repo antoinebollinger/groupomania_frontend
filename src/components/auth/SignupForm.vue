@@ -103,10 +103,10 @@ export default {
 				this.$http.post(process.env.VUE_APP_API+'/api/auth/signup', {
 					user: JSON.stringify(user)
 				})
-				.then(() => {
+				.then(response => {
 					this.loadingMsg = '...connexion';
 					this.afterLogin({
-						"email": user.email,
+						"email": response.data.email,
 						"password": user.password
 					})
 					.then(response => {
