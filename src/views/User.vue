@@ -27,6 +27,7 @@
                 </div>
             </div>
         </div>
+        <CreatePostDialog />
         <SinglePost />
     </div>
 </template>
@@ -35,6 +36,7 @@
 import EventBus from '@/services/eventBus';
 import Post from '@/components/post/Post.vue';
 import SinglePost from '@/components/post/SinglePost.vue';
+import CreatePostDialog from '@/components/post/CreatePostDialog.vue';
 import UserCard from '@/components/user/UserCard.vue';
 import UserSearch from '@/components/user/UserSearch.vue';
 
@@ -101,6 +103,7 @@ export default {
     components: {
         Post,
         SinglePost,
+        CreatePostDialog,
         UserSearch,
         UserCard
     }

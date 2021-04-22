@@ -116,7 +116,7 @@ export default {
             }
             if (goPost) {
                 formData.append('post', JSON.stringify(this.post));
-                console.log(...formData);
+                //console.log(...formData);
                 switch (action) {
                     case "create":
                         this.$http.post(process.env.VUE_APP_API+'/api/post', formData, {
