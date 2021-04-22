@@ -5,11 +5,11 @@
 				<h1 class="text-uppercase pull-center text-primary">Connexion</h1>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.email }}</p>
-					<InputEmail classe="loginInput" v-focus v-model="input.email" :disabled="loading" />
+					<InputEmail v-focus v-model="input.email" :disabled="loading" />
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.password }}</p>
-					<InputPassword classe="loginInput" v-model="input.password" :disabled="loading" />
+					<InputPassword v-model="input.password" :disabled="loading" />
 				</div>
 				<div>
 					<p class="text-left alerte"></p>

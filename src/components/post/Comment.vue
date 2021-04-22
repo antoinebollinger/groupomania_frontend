@@ -14,8 +14,14 @@
                 </div>
             </div>
             <form role="form" @submit.prevent="editComment()" method="post" class="d-flex mb-1" v-if="showEditComment">
-                <input type="text" class="form-control flex-grow-1" name="newContent" v-model="newContent">
-                <button type="submit" class="btn"><i class="fas fa-paper-plane"></i></button>
+                <div class="input-group">
+                    <input class="form-control" type="text" name="newContent" v-model="newContent">
+                    <div class="input-group-append" >
+                        <button type="submit" class="btn btn-outline-tertary"><i class="fas fa-check"></i></button>
+                    </div>
+                </div>
+                <!--<input type="text" class="form-control flex-grow-1" name="newContent" v-model="newContent">
+                <button type="submit" class="btn"><i class="fas fa-paper-plane"></i></button>-->
             </form>
             <p class="comment-text" v-else>{{ comment.content }}</p>
         </div>

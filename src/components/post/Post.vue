@@ -64,7 +64,6 @@
                                 </div>
                             </div>
                         </form>
-
                         <!--<form role="form" @submit.prevent="createComment()" method="post" class="d-flex ">
                             <input type="text" class="form-control flex-grow-1 bg-light" name="content" v-model="content" placeholder="Votre commentaire...">
                             <button type="submit" class="commentButton btn" :disabled="(content == '') ? true : false"><i class="fas fa-paper-plane"></i></button>
