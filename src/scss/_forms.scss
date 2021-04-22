@@ -1,0 +1,8 @@
+input {
+	&:valid, &.valid, &:valid ~ div span, &.valid ~ div span {
+		border-color: var(--success);
+	}
+	&:invalid, &.invalid {
+		border-color: #ced4da;
+	}
+};
