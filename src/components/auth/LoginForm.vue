@@ -13,8 +13,8 @@
 				</div>
 				<div>
 					<button type="submit" class="btn btn-lg btn-primary text-uppercase w-100 d-flex align-items-center p-0" :disabled="loading">
-						<span class="iSubmit" v-if="loading"><img src="../../assets/spinner.gif" height="20"></span>
-						<span class="iSubmit" v-else><i class="fas fa-sign-in-alt"></i></span>
+						<span class="iSubmit" v-show="loading"><img src="../../assets/spinner.gif" height="20"></span>
+						<span class="iSubmit" v-show="!loading"><i class="fas fa-sign-in-alt"></i></span>
 						<span class="flex-grow-1">{{ loadingMsg }}</span>
 					</button>
 				</div>
