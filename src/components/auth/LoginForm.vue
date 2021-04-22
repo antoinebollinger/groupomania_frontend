@@ -5,13 +5,14 @@
 				<h1 class="text-uppercase pull-center text-primary">Connexion</h1>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.email }}</p>
-					<input v-focus v-model="input.email" type="email" data-type="email" name="email" id="email" class="form-control input-lg w-100" placeholder="E-mail" :disabled="loading">
+					<InputEmail v-focus v-model="input.email" :disabled="loading" />
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.password }}</p>
-					<input v-model="input.password" type="password" data-type="password" name="password" id="password" class="form-control input-lg w-100" placeholder="Mot de passe" :disabled="loading">
+					<InputPassword v-model="input.password" :disabled="loading" />
 				</div>
 				<div>
+					<p class="text-left alerte"></p>
 					<button type="submit" class="btn btn-lg btn-primary text-uppercase w-100 d-flex align-items-center p-0" :disabled="loading">
 						<span class="iSubmit" v-show="loading"><img src="../../assets/spinner.gif" height="20"></span>
 						<span class="iSubmit" v-show="!loading"><i class="fas fa-sign-in-alt"></i></span>
@@ -25,8 +26,11 @@
 
 <script>
 import EventBus from '@/services/eventBus';
+import InputEmail from '@/utils/inputs/Email';
+import InputPassword from '@/utils/inputs/Password';
 import checkForm from '@/services/checkForm';
 import login from '@/services/login';
+
 
 export default {
 	name: 'LoginForm',
@@ -75,6 +79,10 @@ export default {
 				this.loading = false; this.loadingMsg = 'Se connecter';
 			}
 		}
+	},
+	components: {
+		InputEmail,
+		InputPassword
 	}
 }
 </script>

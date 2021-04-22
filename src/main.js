@@ -31,7 +31,8 @@ Vue.directive('focus', {
   // When the bound element is inserted into the DOM...
   inserted: function (el) {
     // Focus the element
-    el.focus()
+    let target = (el.tagName != 'INPUT') ? el.querySelector('input') : el ;
+    target.focus();
   }
 })
 

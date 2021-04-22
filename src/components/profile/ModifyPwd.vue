@@ -45,7 +45,7 @@
 
 <script>
 import checkForm from '@/services/checkForm';
-import CheckPwd from '@/services/CheckPwd.vue';
+import CheckPwd from '@/utils/CheckPwd.vue';
 
 export default {
     name: 'ModifyPwd',

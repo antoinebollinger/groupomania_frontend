@@ -6,21 +6,21 @@
 				<p class="alerte text-danger">{{ errorMsg.general }} </p>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.firstName }}</p>
-					<input v-focus v-model="input.firstName" type="text" data-type="text" name="firstName" id="firstName" class="form-control input-lg w-100" placeholder="Prénom" required :disabled="loading">
+					<InputText v-focus icone="fas fa-user" v-model="input.firstName" name="firstName" id="firstName" placeholder="Prénom" :disabled="loading"/>
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.lastName }}</p>
-					<input v-model="input.lastName" type="text" data-type="text" name="lastName" id="lastName" class="form-control input-lg w-100" placeholder="Nom" required :disabled="loading">
+					<InputText icone="fas fa-user" v-model="input.lastName" name="lastName" id="lastName" placeholder="Nom" :disabled="loading"/>
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.email }}</p>
-					<input v-model="input.email" type="email" data-type="email" name="email" id="email" class="form-control input-lg w-100" placeholder="E-mail" required :disabled="loading">
+					<InputEmail v-model="input.email" :disabled="loading" />
 				</div>
 				<div class="form-group">
 					<p class="text-left alerte">{{ errorMsg.password }}</p>
-					<input v-model="input.password" type="password" data-type="password" name="password" id="password" class="form-control input-lg invalid w-100" placeholder="Mot de passe" required :disabled="loading">
+					<InputPassword v-model="input.password" :disabled="loading" classe="invalid" />
 					<br>
-					<CheckPwd />
+					<CheckPwd binder="password" />
 				</div>
 				<div>
 					<button type="submit" class="btn btn-lg btn-primary-2 text-uppercase w-100 d-flex align-items-center p-0" :disabled="loading">
@@ -36,8 +36,11 @@
 
 <script>
 import EventBus from '@/services/eventBus';
+import InputEmail from '@/utils/inputs/Email';
+import InputPassword from '@/utils/inputs/Password';
+import InputText from '@/utils/inputs/Text';
 import checkForm from '@/services/checkForm';
-import CheckPwd from '@/services/CheckPwd.vue';
+import CheckPwd from '@/utils/CheckPwd.vue';
 import login from '@/services/login';
 
 export default {
@@ -131,6 +134,9 @@ export default {
 		}
     },
 	components: {
+		InputEmail,
+		InputPassword,
+		InputText,
 		CheckPwd
 	}
 }
@@ -143,16 +149,6 @@ input {
 	}
 	&:invalid, &.invalid {
 		border-color: #ced4da;
-	}
-};
-
-#password {
-	~ div {
-		opacity: 0;
-		transition: opacity 0.4s;
-	}
-	&:focus ~ div, &:not(:placeholder-shown) ~ div {
-		opacity: 1;
 	}
 };
 
