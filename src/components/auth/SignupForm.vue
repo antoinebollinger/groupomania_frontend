@@ -143,15 +143,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-input {
-	&:valid, &.valid {
-		border-color: var(--success);
-	}
-	&:invalid, &.invalid {
-		border-color: #ced4da;
-	}
-};
-
 .iSubmit {
 	padding: 0.375rem 0.75rem;
 }
