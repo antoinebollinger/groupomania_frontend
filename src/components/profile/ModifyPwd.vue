@@ -14,7 +14,9 @@
                     <div class="col-sm-5 d-flex align-items-center"><h6 class="mb-0">Ancien mot de passe</h6></div>
                     <div class="col-sm-7 text-primary-2">
                         <p class="text-left alerte">{{ errorMsg.oldPwd }}</p>
-                        <input type="password" data-type="password" v-model="data.oldPwd" id="oldPwd" name="oldPwd" class="form-control input-lg w-100" required>
+                        <InputPassword id="oldPwd" name="oldPwd" classe="loginInput" v-model="data.oldPwd" />
+
+                        <!--<input type="password" data-type="password" v-model="data.oldPwd" id="oldPwd" name="oldPwd" class="form-control input-lg w-100" required>-->
                     </div>
                 </div>
  
@@ -22,8 +24,12 @@
                     <div class="col-sm-5 d-flex align-items-center"><h6 class="mb-0">Nouveau mot de passe</h6></div>
                     <div class="col-sm-7 text-primary-2">
                         <p class="text-left alerte">{{ errorMsg.newPwd1 }}</p>
-                        <input type="password" data-type="password" v-model="data.newPwd1" id="newPwd1" name="newPwd1" class="form-control input-lg invalid w-100" required>
-                        <CheckPwd />
+                        <InputPassword id="newPwd1" name="newPwd1" classe="loginInput invalid" v-model="data.newPwd1" />
+                        <br>
+                        <CheckPwd binder="newPwd1" />
+
+                        <!--<input type="password" data-type="password" v-model="data.newPwd1" id="newPwd1" name="newPwd1" class="form-control input-lg invalid w-100" required>
+                        <CheckPwd />-->
                     </div>
                 </div>
          
@@ -31,7 +37,9 @@
                     <div class="col-sm-5 d-flex align-items-center"><h6 class="mb-0">Répétez le nouveau mot de passe</h6></div>
                     <div class="col-sm-7 text-primary-2">
                         <p class="text-left alerte" id="textNewPwd2">{{ errorMsg.newPwd2 }}</p>
-                        <input type="password" data-type="password" v-model="data.newPwd2" id="newPwd2" name="newPwd2" class="form-control input-lg invalid w-100" required>
+                        <InputPassword id="newPwd2" name="newPwd2" classe="loginInput" v-model="data.newPwd2" />
+
+                        <!--<input type="password" data-type="password" v-model="data.newPwd2" id="newPwd2" name="newPwd2" class="form-control input-lg invalid w-100" required>-->
                     </div>
                 </div>
          
@@ -45,7 +53,8 @@
 
 <script>
 import checkForm from '@/services/checkForm';
-import CheckPwd from '@/utils/CheckPwd.vue';
+import InputPassword from '@/utils/inputs/Password';
+import CheckPwd from '@/utils/CheckPwd';
 
 export default {
     name: 'ModifyPwd',
@@ -117,10 +126,8 @@ export default {
             }
             if (goModify.valid) {
                 if (this.data.newPwd1 == this.data.newPwd2) {
-                    console.log('go');
                     this.$http.put(process.env.VUE_APP_API+'/api/user/'+localStorage.id+'/pwd', this.data, {headers: { Authorization: `Bearer ${localStorage.token}` }})
                     .then(response => {
-                        console.log(response);
                         this.$dialog({
                             title: 'Confirmation',
                             content: response.data.message,
@@ -144,6 +151,7 @@ export default {
         }
     },
     components: {
+        InputPassword,
         CheckPwd
     }
 }

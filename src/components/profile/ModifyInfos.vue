@@ -14,7 +14,7 @@
                 <div class="col-sm-7 text-primary-2" v-if="showInfos">{{ user.firstName }}</div>
                 <div class="col-sm-7 text-primary-2" v-if="!showInfos">
                     <p class="text-left alerte">{{ errorMsg.firstName }}</p>
-                    <input type="text" data-type="text" v-model="user.firstName" id="firstName" name="firstName" class="form-control input-lg w-100" />
+                    <InputText name="firstName" id="firstName" v-model="user.firstName" prependIcone="fas fa-user" />
                 </div>
             </div>
      
@@ -23,7 +23,7 @@
                 <div class="col-sm-7 text-primary-2" v-if="showInfos">{{ user.lastName }}</div>
                 <div class="col-sm-7 text-primary-2" v-if="!showInfos">
                     <p class="text-left alerte">{{ errorMsg.lastName }}</p>
-                    <input type="text" data-type="text" v-model="user.lastName" id="lastName" name="lastName" class="form-control input-lg w-100" />
+                    <InputText name="lastName" id="lastName" v-model="user.lastName" prependIcone="fas fa-user" />
                 </div>
             </div>
            
@@ -32,7 +32,7 @@
                 <div class="col-sm-7 text-primary-2" v-if="showInfos">{{ user.email }}</div>
                 <div class="col-sm-7 text-primary-2" v-if="!showInfos">
                     <p class="text-left alerte">{{ errorMsg.email }}</p>
-                    <input type="email" data-type="email" v-model="user.email" id="email" name="email" class="form-control input-lg w-100" />
+                    <InputEmail name="email" id="email" v-model="user.email" />
                 </div>
             </div>
      
@@ -41,7 +41,7 @@
                 <div class="col-sm-7 text-primary-2" v-if="showInfos">{{ user.fonction }}</div>
                 <div class="col-sm-7 text-primary-2" v-if="!showInfos">
                     <p class="text-left alerte">{{ errorMsg.fonction }}</p>
-                    <input type="text" data-type="textEmpty" v-model="user.fonction" id="fonction" name="fonction" class="form-control input-lg w-100" />
+                    <InputText name="fonction" id="fonction" v-model="user.fonction" prependIcone="fas fa-network-wired" />
                 </div>
             </div>
 
@@ -55,8 +55,10 @@
 </template>
 
 <script>
-import checkForm from '@/services/checkForm';
 import EventBus from '@/services/eventBus';
+import InputEmail from '@/utils/inputs/Email';
+import InputText from '@/utils/inputs/Text';
+import checkForm from '@/services/checkForm';
 
 export default {
     name: 'ModifyInfos',
@@ -125,6 +127,10 @@ export default {
             this.user.email = localStorage.email;
             this.user.fonction = localStorage.fonction;
         }
-    }   
+    },
+    components: {
+        InputEmail,
+		InputText,
+    }
 }
 </script>
