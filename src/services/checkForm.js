@@ -8,7 +8,7 @@ function checkForm(inputs) {
             case "text": 
             //Les textes doivent contenir des caractères alphanumériques, apostrophe et espace, et ne pas être vides
             regExTest = /^[/A-Za-z\u00C0-\u017F -,]+$/;
-            returnMsg = "Ce champ ne peut pas être vide.";
+            returnMsg = "Champ obligatoire avec caractères alphanumériques seulement.";
             break;
             case "textEmpty": 
             //Variante pour les textes qui peuvent être vide

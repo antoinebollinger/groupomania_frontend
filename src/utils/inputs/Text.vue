@@ -3,7 +3,7 @@
         <div class="input-group-prepend" v-if="prepend">
             <span class="input-group-text"><i :class="`${prependIcone}`"></i></span>
         </div>
-        <input :class="`form-control ${classe}`" type="text" data-type="text" :id="id" :name="name" :placeholder="placeholder" :value="value" :required="required" :disabled="disabled" v-on:input="updateValue($event.target.value)">
+        <input :class="`form-control ${classe}`" type="text" :data-type="dataType" :id="id" :name="name" :placeholder="placeholder" :value="value" :required="required" :disabled="disabled" v-on:input="updateValue($event.target.value)">
         <div class="input-group-append" v-if="append">
             <span class="input-group-text"><i :class="`${appendIcone}`"></i></span>
         </div>
@@ -33,6 +33,10 @@ export default {
         classe: {
             type: String,
             default: ''
+        },
+        dataType: {
+            type: String,
+            default: 'text'
         },
         name: {
             type: String,

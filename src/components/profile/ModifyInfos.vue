@@ -14,7 +14,7 @@
                 <div class="col-sm-7 text-primary-2" v-if="showInfos">{{ user.firstName }}</div>
                 <div class="col-sm-7 text-primary-2" v-if="!showInfos">
                     <p class="text-left alerte">{{ errorMsg.firstName }}</p>
-                    <InputText name="firstName" id="firstName" v-model="user.firstName" prependIcone="fas fa-user" />
+                    <InputText name="firstName" id="firstName" v-model="user.firstName" prependIcone="fas fa-user" placeholder="" />
                 </div>
             </div>
      
@@ -23,7 +23,7 @@
                 <div class="col-sm-7 text-primary-2" v-if="showInfos">{{ user.lastName }}</div>
                 <div class="col-sm-7 text-primary-2" v-if="!showInfos">
                     <p class="text-left alerte">{{ errorMsg.lastName }}</p>
-                    <InputText name="lastName" id="lastName" v-model="user.lastName" prependIcone="fas fa-user" />
+                    <InputText name="lastName" id="lastName" v-model="user.lastName" prependIcone="fas fa-user" placeholder="" />
                 </div>
             </div>
            
@@ -32,7 +32,7 @@
                 <div class="col-sm-7 text-primary-2" v-if="showInfos">{{ user.email }}</div>
                 <div class="col-sm-7 text-primary-2" v-if="!showInfos">
                     <p class="text-left alerte">{{ errorMsg.email }}</p>
-                    <InputEmail name="email" id="email" v-model="user.email" />
+                    <InputEmail name="email" id="email" v-model="user.email" placeholder="" />
                 </div>
             </div>
      
@@ -41,7 +41,7 @@
                 <div class="col-sm-7 text-primary-2" v-if="showInfos">{{ user.fonction }}</div>
                 <div class="col-sm-7 text-primary-2" v-if="!showInfos">
                     <p class="text-left alerte">{{ errorMsg.fonction }}</p>
-                    <InputText name="fonction" id="fonction" v-model="user.fonction" prependIcone="fas fa-network-wired" />
+                    <InputText name="fonction" id="fonction" v-model="user.fonction" prependIcone="fas fa-network-wired" placeholder="" :required="false" dataType="textEmpty" />
                 </div>
             </div>
 
@@ -88,7 +88,6 @@ export default {
         modifyInfos: function() {
             this.$loading.show({delay: 0});
             const inputs = document.getElementById("modifyInfosForm").querySelectorAll('input');
-
             const goModify = this.checkForm(inputs);
             for (let element in this.errorMsg) {
                 this.errorMsg[element] = '';
