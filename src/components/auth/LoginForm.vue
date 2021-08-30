@@ -51,7 +51,7 @@ export default {
 	mixins: [checkForm, login],
 	methods: {
 		login: function() {
-			this.loading = true; this.loadingMsg = '...connection';
+			this.loading = true; this.loadingMsg = '...connexion';
 			const inputs = document.getElementById("loginForm").querySelectorAll("input");
 			const goSignup = this.checkForm(inputs);
 			for (let element in this.errorMsg) {
